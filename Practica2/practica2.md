@@ -82,3 +82,6 @@ Una vez dentro de ese archivo, añadimos la siguiente linea:
 Con _3 */3 * * *_ indicamos que se ejecute la orden ssh en el minuto 3 cada 3 horas.
 
 El resultado del fichero crontab es el siguiente:
+
+![  paso6](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso6.PNG)
+
