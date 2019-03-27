@@ -35,6 +35,7 @@ Como podemos ver antes de hacer el `rsync` en la maquina2 no hay nada en el dire
 
 ![paso3_1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso3_1.PNG)
 ![ paso3_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso3_2.PNG)
+
 Si queremos ignorar ciertos directorios en nuestra copia podemos usar el parámetro `--exclude` y con el parámetro `--delete` los ficheros que se hayan eliminado en la maquina1 tambien se eliminan en la máquina2.
 
 Para ello debemos ejecutar:
@@ -56,6 +57,7 @@ Tras hacer esto tenemos que copiar la llave pública a la maquina1. Para ello:
 `ssh-copy-id jairoantonio2@192.168.1.100`
 
 ![ paso5_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_2.PNG)
+
 Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1 mediante SSH y vemos como esta vez no nos pide contraseña.
 
 ![ paso5_3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_3.PNG)
