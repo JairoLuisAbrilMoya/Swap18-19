@@ -5,7 +5,7 @@ El objetivo de la práctica2 es aprender copiar archivos con ssh, clonar contend
 ## Copiar archivos con SSH
 Para copiar archivos entre una máquina y otra mediante _ssh_ usamos el siguiente comando:
 
-`tar czf - directorio_1 | ssh javi@192.168.1.100 'cat > ~/tar.tgz'`
+`tar czf - directorio_1 | ssh jairoantonio2@192.168.1.100 'cat > ~/tar.tgz'`
 
 Con esto lo que conseguimos es comprimir el contenido de 'directorio_1' y enviar el archivo comprimido a la máquina destino.
 
