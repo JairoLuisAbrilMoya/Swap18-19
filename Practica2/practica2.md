@@ -63,7 +63,7 @@ Tras hacer esto tenemos que copiar la llave pública a la maquina1. Para ello:
 
 ![ paso5_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_2.PNG)
 
-Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1 mediante SSH y vemos como esta vez no nos pide contraseña.
+Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1 mediante SSH desde la maquina2 y vemos como esta vez no nos pide contraseña.
 
 ![ paso5_3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_3.PNG)
 
