@@ -73,7 +73,7 @@ cron es un administrador de procesos en segundo plano que ejecuta procesos en el
 
 Por ello editamos el archivo _/etc/crontab_ mediante:
 
-`sudo nano /etc/crontab`
+`sudo vi /etc/crontab`
 
 Una vez dentro de ese archivo, añadimos la siguiente linea:
 
