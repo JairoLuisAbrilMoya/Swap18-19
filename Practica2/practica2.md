@@ -77,7 +77,7 @@ Por ello editamos el archivo _/etc/crontab_ mediante:
 
 Una vez dentro de ese archivo, añadimos la siguiente linea:
 
-`3 */3 * * * root sync -avz -e ssh jairoantonio2@192.168.1.50:/var/www/ /var/www`
+`3 */3 * * * root rsync -avz -e ssh jairoantonio2@192.168.1.50:/var/www/ /var/www`
 
 Con _3 */3 * * *_ indicamos que se ejecute la orden ssh en el minuto 3 cada 3 horas.
 
