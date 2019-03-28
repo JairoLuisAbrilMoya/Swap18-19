@@ -27,9 +27,9 @@ Para comprobar que lo hemos instalado correctamente al igual que con apache ejec
 
 ![  rsyncswap1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/versionrsyncswap1.PNG)
 
-![ rsyncswap1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/versionrsyncswap2.PNG)
+![ rsyncswap2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/versionrsyncswap2.PNG)
 
-Una vez hecho esto, vamos a copiar el directorio _/var/www/_ de la maquina1 a la maquina2, para ello ejecutamos en la maquina2 el siguiente comando:
+Una vez hecho esto, vamos a copiar el directorio _/var/www/_ de la maquina1 a la maquina2, para ello ejecutamos en la maquina1 el siguiente comando:
 
 `rsync -avz -e ssh jairoantonio2@192.168.1.100:/var/www/ /var/www/`
 
