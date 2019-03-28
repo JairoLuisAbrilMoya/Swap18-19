@@ -39,11 +39,11 @@ Como podemos ver antes de hacer el `rsync` en la maquina2 no hay nada en el dire
 
 ![ paso3_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso3_2.PNG)
 
-Si queremos ignorar ciertos directorios en nuestra copia podemos usar el parámetro `--exclude` y con el parámetro `--delete` los ficheros que se hayan eliminado en la maquina1 tambien se eliminan en la máquina2.
+Si queremos ignorar ciertos directorios en nuestra copia podemos usar el parámetro `--exclude` y con el parámetro `--delete` los ficheros que se hayan eliminado en la maquina1 tambien se eliminan en la máquina2(192.168.1.100).
 
 Para ello debemos ejecutar:
 
-`rsync -avz --delete --exclude=**/stats --exclude=**/error --exclude=**/files/pictures -e ssh jairoantonio2@192.168.1.50:/var/www/ /var/www/`
+`rsync -avz --delete --exclude=**/stats --exclude=**/error --exclude=**/files/pictures -e ssh jairoantonio2@192.168.1.100:/var/www/ /var/www/`
 
 ![ paso4](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso4.PNG)
 
@@ -77,7 +77,7 @@ Por ello editamos el archivo _/etc/crontab_ mediante:
 
 Una vez dentro de ese archivo, añadimos la siguiente linea:
 
-`3 */3 * * * root rsync -avz -e ssh jairoantonio2@192.168.1.50:/var/www/ /var/www`
+`3 */3 * * * root rsync -avz -e ssh jairoantonio2@192.168.1.100:/var/www/ /var/www`
 
 Con _3 */3 * * *_ indicamos que se ejecute la orden ssh en el minuto 3 cada 3 horas.
 
