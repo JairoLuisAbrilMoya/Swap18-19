@@ -49,7 +49,7 @@ Para ello debemos ejecutar:
 
 ## Acceder a SSH sin contraseña
 
-Para poder acceder mediante SSH de una máquina a otra, lo que tenemos que hacer es generar un par de claves RSA. Para ello ejecutamos el comando:
+Para poder acceder mediante SSH de una máquina2(192.168.1.101) a la maquina1(192.168.1.100), lo que tenemos que hacer es generar un par de claves RSA. Para ello ejecutamos el comando:
 
 `ssh-keygen -b 4096 -t rsa`
 
@@ -57,13 +57,13 @@ Lo cual muestra por pantalla:
 
 ![ keygen](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5sshkeygen.PNG)
 
-Tras hacer esto tenemos que copiar la llave pública a la maquina1. Para ello:
+Tras hacer esto tenemos que copiar la llave pública a la maquina1(192.168.1.100). Para ello:
 
 `ssh-copy-id jairoantonio2@192.168.1.100`
 
 ![ paso5_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_2.PNG)
 
-Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1 mediante SSH desde la maquina2 y vemos como esta vez no nos pide contraseña.
+Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1(192.168.1.100) mediante SSH desde la maquina2 y vemos como esta vez no nos pide contraseña.
 
 ![ paso5_3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practica2/imagenes/paso5_3.PNG)
 
