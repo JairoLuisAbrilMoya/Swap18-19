@@ -22,9 +22,9 @@ Despues he asignado la IP fija a la interfaz enp0s8 con : **sudo vi /etc/network
 A continuación, muestro las modificaciones en ambas máquinas.
 
 
-![sudo vi swap 1](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/sudo%20vi%20etc_network_interfaces%20swap1.PNG)
+![sudo vi swap 1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/sudo%20vi%20etc_network_interfaces%20swap1.PNG)
 
-![sudo vi swap 2](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/sudo%20vi%20etc_network_interfaces%20swap2.PNG)
+![sudo vi swap 2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/sudo%20vi%20etc_network_interfaces%20swap2.PNG)
 
 
 Una vez hecho este cambio debemos reiniciar y obtendremos las siguientes interfaces de red.
@@ -33,25 +33,25 @@ Haciendo: **ifconfig -a**
 
 
 
-![ifconfig swap 1](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/ifconfig%20swap1.PNG)
+![ifconfig swap 1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/ifconfig%20swap1.PNG)
 
-![ifconfig swap 2](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/ifconfig%20swap2.PNG)
+![ifconfig swap 2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/ifconfig%20swap2.PNG)
 
 Para ver que Apache está funcionando, usando un editor de texto plano, crearemos el archivo HTML llamado hola.html en el directorio /var/www/html. 
 
 Y mediante curl accedemos a ambas máquinas remotamente.
 
 
-![curl swap 1 a swap 2](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/curl%20desde%20swap1%20a%20swap2.PNG)
+![curl swap 1 a swap 2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/curl%20desde%20swap1%20a%20swap2.PNG)
 
-![curl swap 2 a swap 1](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/curl%20desde%20swap2%20a%20swap1.PNG)
+![curl swap 2 a swap 1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/curl%20desde%20swap2%20a%20swap1.PNG)
 
 Por último realizo la instalación de SSH y muestro la conexión entre máquinas mediante SSH (de una máquina a la otra):
 
 
-![ssh swap 1 a swap 2](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/ssh%20desde%20maquina%20swap%201%20a%20swap%202.PNG)
+![ssh swap 1 a swap 2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/ssh%20desde%20maquina%20swap%201%20a%20swap%202.PNG)
 
-![ssh swap 2 a swap 1](https://github.com/JairoLuisAbrilMoya/Practica1/blob/master/ssh%20desde%20maquina%20swap%202%20a%20swap%201.PNG)
+![ssh swap 2 a swap 1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica1/Imagenes/sudo%20vi%20etc_network_interfaces%20swap2.PNG)
 
 
 
