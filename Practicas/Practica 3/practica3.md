@@ -15,7 +15,7 @@ En particular:
 ubuntuserver1       :   192.168.1.101
 ubuntuserver2       :   192.168.1.100
 balanceador  nginx  :   192.168.1.107
-balanceador haproxy :  192.168.1.111
+balanceador haproxy :  	192.168.1.111
 peticiones          :   192.168.1.110
 
 ### Balancear la carga usando nginx
@@ -95,7 +95,7 @@ Y a continuación le mandamos peticiones y vemos como equireparte la carga entre
 
 Para probar nuestra granja web con un balanceador nginx, vamos a lanzar 90000 peticiones de 10 en 10 con apache benchmark a nuestro balanceador, pidiendo la página hola.html
 
-**ab -n 1000 -c 10 http://192.168.1.107/hola.html**
+**ab -n 1000 -c 10 192.168.1.107/hola.html**
 
 #### Comprobando con top
 
@@ -114,7 +114,7 @@ Podemos observar como es capaz de atender 502.23 peticiones por segundo, tardand
 
 Para poner a prueba nuestro servidor con haproxy como balanceador de carga hemos hecho 1000 peticiones haciendo las peticiones de 10 en 10. (Igual que con nginx)
 
-**ab -n 1000 -c 10 http://192.168.1.111/hola.html**
+**ab -n 1000 -c 10 192.168.1.111/hola.html**
 
 #### Comprobando con top
 
