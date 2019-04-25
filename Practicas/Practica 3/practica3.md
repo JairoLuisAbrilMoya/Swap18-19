@@ -11,9 +11,13 @@ Dejar claro que el tipo de red que tengo entre las máquinas es: red interna.
 La dirección de red en la que están todas las máquinas es: 192.168.1.1.En particular:
 
 *ubuntuserver1       :   192.168.1.101
+
 *ubuntuserver2       :   192.168.1.100
+
 *balanceador  nginx  :   192.168.1.107
+
 *balanceador haproxy :   192.168.1.111
+
 *peticiones          :   192.168.1.110
 
 
