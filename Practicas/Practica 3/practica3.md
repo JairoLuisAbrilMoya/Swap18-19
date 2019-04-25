@@ -1,11 +1,11 @@
 # SWAP1718
-### Práctica3 : Balanceo de carga
+## Práctica3 : Balanceo de carga
 
 El objetivo de la práctica 3 es aprender a configurar un balanceador que reparta la carga entre varios servidores finales conectados en una red, para solucionar el problema de la sobrecarga de los servidores. Así conseguimos una infraestructura redundante y de alta disponibilidad.
 
 Para ello los pasos realizados son los siguientes:
 
-##### Red de las máquinas
+#### Red de las máquinas
 
 Dejar claro que el tipo de red que tengo entre las máquinas es: red interna.
 La dirección de red en la que están todas las máquinas es: 192.168.1.1
@@ -23,7 +23,7 @@ balanceador haproxy :  	192.168.1.111
 peticiones          :   192.168.1.110
 
 
-### Balancear la carga usando nginx
+## Balancear la carga usando nginx
 
 Para instalar nginx hemos ejecutado el siguiente comando de instalación:
 
@@ -43,7 +43,7 @@ Para que nginx deje de funcionar como servidor y empieze a trabajar como balance
 
  **#include /etc/nginx/sites-enabled/*;** 
  
- ### Configurar nginx para balanceo ponderado
+## Configurar nginx para balanceo ponderado
 
 Usamos este tipo de balanceo si sabemos que alguna de las máquinas finales es más potente, para ello modificamos la definición del “upstream” de una de las máquinas para pasarle más tráfico que al resto de las del grupo. Para que esto sea posible tenemos el modificador “weight”, al que le damos un valor numérico distinto de 1 (valor por defecto).
 
@@ -53,11 +53,11 @@ Cambiando el nivel de carga. (La máquina1 tiene el doble de capacidad que la m�
 
 Para comprobar las diferencias entre los balanceos, hago peticiones mediante curl (desde la máquina peticiones) a la ip del balanceador. (192.168.1.107)
 
-#### Funcionamiento balanceo Round-Robin
+### Funcionamiento balanceo Round-Robin
 
 ![balance round robin](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%203/imagenes/balanceo%20round%20robin.PNG)
 
-#### Funcionamiento balanceo ponderado
+### Funcionamiento balanceo ponderado
 
 ![balanceado por ponderado](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%203/imagenes/balanceo%20por%20ponderado.PNG)
 
@@ -79,7 +79,7 @@ Para ello, modificamos el fichero **/etc/haproxy/haproxy.cfg** añadiendo a la c
 
 ![configuracion haproxy](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%203/imagenes/configuracionhaproxy.PNG)
 
-### Comprobar que funciona
+## Comprobar que funciona
 
 Para lanzar haproxy una vez hemos cambiando su configuración ejecutamos el siguiente comando:
 
