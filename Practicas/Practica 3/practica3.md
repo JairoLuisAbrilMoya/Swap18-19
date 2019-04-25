@@ -8,19 +8,13 @@ Para ello los pasos realizados son los siguientes:
 #### Red de las máquinas
 
 Dejar claro que el tipo de red que tengo entre las máquinas es: red interna.
-La dirección de red en la que están todas las máquinas es: 192.168.1.1
+La dirección de red en la que están todas las máquinas es: 192.168.1.1.En particular:
 
-En particular:
-
-ubuntuserver1       :   192.168.1.101
-
-ubuntuserver2       :   192.168.1.100
-
-balanceador  nginx  :   192.168.1.107
-
-balanceador haproxy :  	192.168.1.111
-
-peticiones          :   192.168.1.110
+*ubuntuserver1       :   192.168.1.101
+*ubuntuserver2       :   192.168.1.100
+*balanceador  nginx  :   192.168.1.107
+*balanceador haproxy :   192.168.1.111
+*peticiones          :   192.168.1.110
 
 
 ## Balancear la carga usando nginx
@@ -139,5 +133,11 @@ En este caso se han realizado 568.53 pet/s, tardando 17.589 ms de media por peti
 Como hemos observado los dos balanceadores han podido responder a todas las peticiones y ninguno se ha saturado, pero vemos un mejor rendimiento en haproxy debido a que los tiempos de respuestas son menores, tiene mayor tasa de pet/s y una mayor velocidad de transferencia.
 
 Aquí podemos ver una comparación de tiempos:
+
+**Balanceador** | **Tiempo total** | **Peticiones fallidas** | **Peticiones/segundo** | **Tiempo/Petición** | **Velocidad de transferencia** 
+--- | --- | --- | --- | --- | --- 
+nginx | 1.759 s | 0 | 568.53 | 17.589 | 190.71
+haproxy | 1.991 s | 0 | 502.23 | 19.911 | 168.39
+
 
 
