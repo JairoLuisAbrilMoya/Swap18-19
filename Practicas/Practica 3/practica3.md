@@ -10,15 +10,15 @@ Para ello los pasos realizados son los siguientes:
 Dejar claro que el tipo de red que tengo entre las máquinas es: red interna.
 La dirección de red en la que están todas las máquinas es: 192.168.1.1.En particular:
 
-1.ubuntuserver1       :   192.168.1.101
+1. ubuntuserver1       :   192.168.1.101
 
-2.ubuntuserver2       :   192.168.1.100
+2. ubuntuserver2       :   192.168.1.100
 
-3.balanceador  nginx  :   192.168.1.107
+3. balanceador  nginx  :   192.168.1.107
 
-4.balanceador haproxy :   192.168.1.111
+4. balanceador haproxy :   192.168.1.111
 
-5.peticiones          :   192.168.1.110
+5. peticiones          :   192.168.1.110
 
 
 ## Balancear la carga usando nginx
