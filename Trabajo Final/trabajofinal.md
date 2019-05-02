@@ -1,9 +1,9 @@
-## Exportación de máquinas virtuales a otro hardware anfitrión
-### 1. Introducción
+# Exportación de máquinas virtuales a otro hardware anfitrión
+## 1. Introducción
 
 El tema a tratar será, como se indica en el título, como una máquina virtual común puede "clonarse" en otra máquina anfitrión con un hardware distinto al hardware anfitrión de la máquina original. Open Virtualization Format (OVF) y Open Virtualization Appliance (OVA) son las dos presentaciones del estándar que nos permite importar máquinas virtuales alojadas en un determinado hardware anfitrión para transferir la información de dicha máquina virtual a otro hardware distinto, para exportar los archivos creados mediante el estándar (ya sean .ovf o .ova) en el nuevo hardware en el que queremos clonar la máquina virtual. Todo este proceso de clonado puede ser realizado con la ayuda de los medios software de virtualización, como pueden ser VirtualBox o VMware
  
-### 2. ¿Qué es la DMTF?
+## 2. ¿Qué es la DMTF?
 
 Distributed Management Task Force (DMTF) es una organización dedicada al desarrollo de estándares para la gestión de sistemas en entornos de Tecnologías de la Información empresariales. Buscando la construcción de componentes de infraestructura independientes de la plataforma, facilitando así a la interoperabilidad de sistemas de gestión entre productos de diferentes fabricantes o empresas.
 Esta organización ha contado con la participación de empresas como AMD, Cisco, HP, Huawei, IBM, Intel, Microsoft, Oracle, VMware, etc, llegando a tener en 2012 más de 4000 participantes activos dentro de las más de 200 organizaciones y empresas adscritos a la DMTF.
@@ -48,12 +48,12 @@ Este es uno de los dos estándares en los cuales nos centraremos para el estudio
 
 6. DSP1043 – Allocation Capabilities Profile
 
-### 3. ¿Qué es OVF/OVA?
+## 3. ¿Qué es OVF/OVA?
 
 Como se ha comentado en la introducción, OVF y OVA son el estándar que nos permite importar máquinas virtuales de un hardware a otro. Este fue desarrollado bajo el nombre de Open Virtual Machine Format en septiembre de 2007 por la DMTF. El formato de virtualización abierto ( OVF ) es un estándar abierto para empaquetar y distribuir dispositivos virtuales o, más generalmente, software para ejecutar en máquinas virtuales .
 Su finalidad es la de describir un formato abierto, seguro, portable, eficiente y extensible para empaquetación y distribución de software a ejecutar en máquinas virtuales.
 El estándar OVF no está vinculado a ningún hipervisor o arquitectura de conjunto de instrucciones en particular . La unidad de empaquetado y distribución es un denominado paquete OVF que puede contener uno o más sistemas virtuales, cada uno de los cuales puede implementarse en una máquina virtual.
-### 4. ¿Qué diferencias hay entre el formato OVF y el formato OVA?
+## 4. ¿Qué diferencias hay entre el formato OVF y el formato OVA?
 
 Un OVF se compone generalmente de varios archivos. 
 Por lo general, este es un pequeño archivo de descripción (.ovf), los archivos de estado de las máquinas virtuales (es decir, su disco - * .vhd o * .vmdk) y, a veces, un archivo de manifiesto (.mf): es un estándar abierto, por lo que no se limita a VMware. 
@@ -68,14 +68,14 @@ En cambio, en la presentación OVA, todo se empaqueta en un mismo archivo con ex
 
 ![4.1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/4.1.jpg)
 
-### 5. ¿Qué es una Virtual Appliance?
+## 5. ¿Qué es una Virtual Appliance?
 
 Una Virtual Appliance (VA) es una máquina virtual preconfigurada y lista para ser utilizada en un hipervisor (medio software para poner en funcionamiento las máquinas virtuales).
 Por lo general, son máquinas configuradas con un determinado Sistema Operativo y con unas determinadas aplicaciones preinstaladas para cumplir con algún propósito específico. Son el mejor ejemplo de importación de máquinas virtuales preparadas para poder ser utilizadas y funcionar en cualquier tipo de hardware.
 La implementación de una aplicación como un dispositivo virtual puede eliminar problemas con la instalación y configuración, como problemas de compatibilidad de software o controladores. Los usuarios pueden simplemente descargar un solo archivo y ejecutar la aplicación. Los recursos requeridos para el mantenimiento también se reducen. Los dispositivos virtuales han demostrado ser útiles en la implementación de aplicaciones de red. También son útiles en la computación grid, donde pueden resolver los problemas introducidos por hardware y sistemas operativos heterogéneos, y en el modelo de entrega de Software como servicio ( SaaS ), donde la simplicidad del dispositivo virtual puede ayudar a mejorar las economías de escala.
 Existen dos tipos de dispositivos virtuales, cerrados y abiertos. Un VA cerrado siempre se empaqueta, distribuye, mantiene, actualiza y administra como una unidad. Una VA abierta es accesible a los clientes para modificaciones. Los desarrolladores pueden incluir una interfaz web para configuraciones personalizadas o entregar parches y actualizaciones.
  
-### 6.Ejemplo de importación de Máquina Virtual en nuestro hardware anfitrión.
+## 6. Ejemplo de importación de Máquina Virtual en nuestro hardware anfitrión.
 
 Nos dirigimos por ejemplo a la página descargarmaquinasvirtuales.com, que nos ofrece ya máquinas virtuales preconfiguradas.
 
@@ -89,7 +89,7 @@ Al realizar la importación podremos observar en la siguiente imagen, la máquin
 
 ![6.3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/6.3.PNG)
 
-### 7.Alternativas a la hora de importar una máquina virtual
+## 7. Alternativas a la hora de importar una máquina virtual
 
 Hay otra forma de importar máquinas virtuales, importando el disco duro virtual de la máquina. La extensión de los archivos que guardan la información relativa a los discos duros virtuales suelen ser .vmdk/.vhd/.vdi,, como hemos visto, estos también se importan junto con los archivos .ovf y .mf cuando hacemos uso del estándar OVF.
 
@@ -107,7 +107,7 @@ Como se puede ver en la siguiente captura, el software de la máquina ha sido im
 
 ![7.3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/7.3.PNG)
 
-### 8.Bibliografía
+## 8. Bibliografía
 
     * https://web.archive.org/web/20090430102409/http://www.dmtf.org/about/clo 
 
