@@ -66,7 +66,7 @@ La diferencia que existe entre estas dos es que en la presentación OVF, el empa
 
 En cambio, en la presentación OVA, todo se empaqueta en un mismo archivo con extensión .ova, que, en resumen, empaqueta mediante TAR todos los archivos descritos en la presentación OVF en un solo archivo. Esto es una ventaja pues unifica dichos archivos en uno solo, lo cual hace más sencillo su manejo.
 
-![4.1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/4.1.jpg)
+![4.1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/4.1.png)
 
 ## 5. ¿Qué es una Virtual Appliance?
 
