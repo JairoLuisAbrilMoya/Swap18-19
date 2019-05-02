@@ -1,5 +1,5 @@
 ## Exportación de máquinas virtuales a otro hardware anfitrión
-###1. Introducción
+### 1. Introducción
 
 El tema a tratar será, como se indica en el título, como una máquina virtual común puede "clonarse" en otra máquina anfitrión con un hardware distinto al hardware anfitrión de la máquina original. Open Virtualization Format (OVF) y Open Virtualization Appliance (OVA) son las dos presentaciones del estándar que nos permite importar máquinas virtuales alojadas en un determinado hardware anfitrión para transferir la información de dicha máquina virtual a otro hardware distinto, para exportar los archivos creados mediante el estándar (ya sean .ovf o .ova) en el nuevo hardware en el que queremos clonar la máquina virtual. Todo este proceso de clonado puede ser realizado con la ayuda de los medios software de virtualización, como pueden ser VirtualBox o VMware
  
@@ -11,7 +11,7 @@ Esta organización ha contado con la participación de empresas como AMD, Cisco,
  
  
 **Entre los estándares de DMTF se incluyen:**
-1. Common Information Model (CIM) – El esquema CIM es un esquema conceptual que define cómo los elementos gestionados en un entorno de TI (por ejemplo, ordenadores o redes de área de almacenamiento) se representan como un conjunto común de objetos y relaciones entre ellos. CIM es extensible para permitir ampliaciones específicas de productos para la definición común de estos elementos gestionados. CIM utiliza un modelo basado en UML para definir el esquema CIM. CIM es la base para la mayoría de los otros estándares DMTF.
+1. Common Information Model (CIM)  – El esquema CIM es un esquema conceptual que define cómo los elementos gestionados en un entorno de TI (por ejemplo, ordenadores o redes de área de almacenamiento) se representan como un conjunto común de objetos y relaciones entre ellos. CIM es extensible para permitir ampliaciones específicas de productos para la definición común de estos elementos gestionados. CIM utiliza un modelo basado en UML para definir el esquema CIM. CIM es la base para la mayoría de los otros estándares DMTF.
 
 2. Common Diagnostic Model (CDM) – El esquema CDM es una parte del esquema CIM que define cómo los diagnósticos del sistema deben ser incorporados en la infraestructura de gestión.
 
@@ -83,10 +83,11 @@ Allí seleccionamos la distribución que deseemos y descargamos los archivos nec
 
 En nuestro caso hemos decidido descargarnos un sistema operativo fedora como podemos ver a continuación:
 
+![6.2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/6.2.PNG)
 
 Al realizar la importación podremos observar en la siguiente imagen, la máquina virtual funciona con normalidad una vez iniciada:
 
-![7.3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/7.3.PNG)
+![6.3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/6.3.PNG)
 
 ### 7.Alternativas a la hora de importar una máquina virtual
 
@@ -96,9 +97,19 @@ La importación de únicamente el disco duro nos importará el software contenid
 
 Nos dirigimos a una página web que nos aporte discos duros virtuales con distribuciones ya preinstaladas y descargamos un disco duro virtual:
 
+![7.1](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/7.1.jpg)
+
+Una vez descargado el archivo .ova, procedemos a crear una máquina virtual nueva e importamos el disco duro virtual descargado:
+
+![7.2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/7.2.PNG)
+
+Como se puede ver en la siguiente captura, el software de la máquina ha sido importado y tal y como nos indicaba la página de descarga, el disco duro ya tiene instalada la distribución elegida:
+
+![7.3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Trabajo%20Final/Imagenes/7.3.PNG)
+
 ### 8.Bibliografía
 
-    * https://web.archive.org/web/20090430102409/http://www.dmtf.org/about/clo
+    * https://web.archive.org/web/20090430102409/http://www.dmtf.org/about/clo 
 
     * https://en.wikipedia.org/wiki/Open_Virtualization_Format
 
