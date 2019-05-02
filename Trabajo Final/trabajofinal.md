@@ -130,3 +130,5 @@ Como se puede ver en la siguiente captura, el software de la máquina ha sido im
     * http://drivemeca.blogspot.com.es/2013/03/importando-una-maquina-virtual-en.html
 
 
+
+
