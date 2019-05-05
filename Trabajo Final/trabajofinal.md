@@ -1,4 +1,4 @@
-# Exportación de máquinas virtuales a otro hardware anfitrión
+# Intercambio de maquinas virtuales de un hardware a otro
 ## 1. Introducción
 
 El tema a tratar será, como se indica en el título, como una máquina virtual común puede "clonarse" en otra máquina anfitrión con un hardware distinto al hardware anfitrión de la máquina original. Open Virtualization Format (OVF) y Open Virtualization Appliance (OVA) son las dos presentaciones del estándar que nos permite importar máquinas virtuales alojadas en un determinado hardware anfitrión para transferir la información de dicha máquina virtual a otro hardware distinto, para exportar los archivos creados mediante el estándar (ya sean .ovf o .ova) en el nuevo hardware en el que queremos clonar la máquina virtual. Todo este proceso de clonado puede ser realizado con la ayuda de los medios software de virtualización, como pueden ser VirtualBox o VMware
