@@ -63,9 +63,6 @@ Tras hacer esto tenemos que copiar la llave pública a la maquina1(192.168.1.101
 
 ![ paso5_2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica2/imagenes/paso5_2.PNG)
 
-Para comprobar que la copia se ha realizado correctamente nos conectamos a la maquina1(192.168.1.101) mediante SSH desde la maquina2 y vemos como esta vez no nos pide contraseña.
-
-![ paso5_3](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica2/imagenes/paso5_3.PNG)
 
 ## Actualizar el contenido de /var/www/ con contrab
 
