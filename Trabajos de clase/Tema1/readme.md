@@ -1,12 +1,12 @@
 ### Tema 1: Introducción
 
-1. Buscar información sobre las tareas o servicios web para los que se usan más los siguientes programas:
+#### 1. Buscar información sobre las tareas o servicios web para los que se usan más los siguientes programas:
 
-    apache
-    nginx
-    thttpd
-    Cherokee
-    node.js
+    * apache
+    * nginx
+    * thttpd
+    * Cherokee
+    * node.js
 
 #### Apache
 
@@ -20,11 +20,15 @@ Nginx es un servidor que soporta aplicaciones HTTP, TCP y UDP. Al igual que Apac
 
 thttpd es un servidor web libre desarrollado por ACME Laboratories, compatible con la mayoría de sistemas Unix, que tiene como principales características:
 
-    * Simple: solo utiliza lo mínimo posible para poder usar el protocolo HTTP.
-    * Ligero: el número de archivos que necesita es muy reducido, con tamaños pequeños para estos ficheros y el ejecutable, poco uso de memoria durante la ejecución, etc. Para más información, podemos consultar este enlace.
-    * Multiplataforma: como se ha dicho antes, es posible ejecutarlo en una gran variedad de sistemas basados en Unix.
-    * Rápido: ante un alto nivel de carga, responde mucho más rápido que otros sistemas.
-    * Seguridad: desde ACME Labs., hacen todo lo posible para mantener la seguridad, frente a ataques al servidor, mejorando la seguridad de la herramienta.
+* Simple: solo utiliza lo mínimo posible para poder usar el protocolo HTTP.
+
+* Ligero: el número de archivos que necesita es muy reducido, con tamaños pequeños para estos ficheros y el ejecutable, poco uso de memoria durante la ejecución, etc. Para más información, podemos consultar este enlace.
+
+* Multiplataforma: como se ha dicho antes, es posible ejecutarlo en una gran variedad de sistemas basados en Unix.
+
+* Rápido: ante un alto nivel de carga, responde mucho más rápido que otros sistemas.
+
+* Seguridad: desde ACME Labs., hacen todo lo posible para mantener la seguridad, frente a ataques al servidor, mejorando la seguridad de la herramienta.
 
 #### Cherokee
 
