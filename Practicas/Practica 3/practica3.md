@@ -1,4 +1,4 @@
-# SWAP1718
+# SWAP1819
 ## Práctica3 : Balanceo de carga
 
 El objetivo de la práctica 3 es aprender a configurar un balanceador que reparta la carga entre varios servidores finales conectados en una red, para solucionar el problema de la sobrecarga de los servidores. Así conseguimos una infraestructura redundante y de alta disponibilidad.
