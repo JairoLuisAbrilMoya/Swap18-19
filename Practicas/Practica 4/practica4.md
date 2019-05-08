@@ -78,17 +78,24 @@ Algunas de ellas pueden ser:
 Si queremos que bloquee todo el tráfico tanto de entrada como de salida:
 
 `iptables -P INPUT DROP`
+
 `iptables -P OUTPUT DROP`
+
 `iptables -P FORWARD DROP`
+
 
 ![ bloqueo de entrada y salida ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueosalida%20y%20entrada.PNG)
 
 Si queremos bloquear el tráfico de entrada y permitir el de salida:
 
 `iptables -P INPUT DROP`
+
 `iptables -P FORWARD DROP`
+
 `iptables -P OUTPUT ACCEPT`
+
 `iptables -A INPUT -m state --state NEW, ESTABLISHED -j ACCEPT`
+
 
 ![ bloqueo de entrada y  permite salida ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueo%20entrada%20y%20permite%20salida.PNG)
 
@@ -101,6 +108,7 @@ Si queremos bloquear trafico ICMP para evitar ataques mediante ping:
 Si queremos permitir el acceso por SSH, abriendo el puerto 22:
 
 `iptables -A INPUT -p tcp --dport 22 -j ACCEPT`
+
 `iptables -A OUTPUT -p udp --sport22 -j ACCEPT`
 
 ![  permite acceso por ssh ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/permitir%20acceso%20por%20ssh.PNG)
@@ -108,6 +116,7 @@ Si queremos permitir el acceso por SSH, abriendo el puerto 22:
 Si queremos permitir el acceso a DNS, abriendo el puerto 53:
 
 `iptables -A INPUT -m state --state NEW -p udp --dport 53 -j ACCEPT`
+
 `iptables -A INPUT -m state --state NEW -p tcp --dport 53 -j ACCEPT`
 
 ![   permite acceso a DNS ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/permitir%20acceso%20a%20DNS.PNG)
@@ -115,6 +124,7 @@ Si queremos permitir el acceso a DNS, abriendo el puerto 53:
 Si queremos bloquear todo el tráfico de entrada o salida desde una IP:
 
 `iptables -I INPUT -s 192.168.1.100 -j DROP`
+
 `iptables -I OUTPUT -s 192.168.1.100 -j DROP`
 
 ![ bloqueo de TRAFICO DE UNA IP ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueo%20del%20trafico%20de%20una%20ip.PNG)
