@@ -64,7 +64,7 @@ Reiniciamos el servicio
 
 ### Configuración del cortafuegos
 
-En primer lugar para ver el estado del cortafuegos ejecutamos: iptables -L -n -v
+En primer lugar para ver el estado del cortafuegos ejecutamos: `iptables -L -n -v`
 
 ![ estado cortafuegos](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/estado%20del%20cortafuegos.PNG)
 
