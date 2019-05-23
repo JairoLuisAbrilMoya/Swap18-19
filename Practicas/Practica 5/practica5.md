@@ -1,164 +1,90 @@
-# SWAP1819
+## SWAP1718
+### Práctica5 : Replicación de bases de datos MySQL
 
-## Práctica4 : Asegurar la granja web
+Los objetivos de la práctica 5 son: clonar manualmente BD entre máquinas y configurar la estructura maestro-esclavo entre dos máquinas para realizar el clonado automático de la información.
 
-El objetivo de la práctica 4 es llevar a cabo la configuración de seguridad de la granja web.
+### Creación de una BD e inserción de datos
 
-### Instalar un certificado SSL autofirmado para configurar el acceso por HTTPS
+En todo momento usaremos la interfaz de línea de comandos del MySQL: mysql -uroot -p
 
-Para generar nuestro certificado SSL autofirmado debemos hacer lo siguiente:
+Tras esto, crearemos una BD, junto con una tabla, tal y como se ve en la siguiente figura:
 
--Se activan una serie de módulos: a2enmod ssl
+![mysql-u root -p](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/mysql%20-uroot%20-p.PNG)
 
--Reiniciamos el servicio de apache2 : service apache2 restart
+A continuación insertamos algún dato en la BD que acabamos de crear, para tener algo de lo que hacer una copia de seguridad. En nuestro caso, insertaremos en la tabla Pepe y su número de teléfono.
 
--Creamos la carpeta donde guardaremos nuestro certificado SSL: mkdir /etc/apache2/ssl
+![insert pepe y tlf](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/insertar%20pepe%20y%20tlf.PNG)
 
--Generamos el certificado SSL :
+### Replicar una BD con mysqldump
 
-`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt`
+Una vez terminada la inserción de datos, para poder hacer la copia de seguridad de forma correcta y que no surjan problemas porque alguien acceda a la BD mientras se está haciendo el volcado con mysqldump, tenemos que bloquear la BD.
 
-Como podemos ver nos pide una serie de datos para configurar el dominio.
+Para ello, volveremos a entrar en el terminal de MySQL y ejecutaremos la siguiente orden:
 
-![ certificado autofirmado](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/instalar%20certificado%20autofirmado.PNG)
+FLUSH TABLES WITH READ LOCK;
 
+Ahora ya sí podemos hacer el mysqldump para volcar los datos. Y a continuación desbloqueamos las tablas.
 
-A continuación tenemos que editar el archivo de configuración de nuestro servidor para añadir nuestro certificado previamente creado e indicar que lo utilice:
+![mysqldump](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/mysqldump.PNG)
 
-sudo nano /etc/apache2/sites-available/default-ssl
+Una vez hecho esto, vamos a la máquina2 para copiar el archivo .sql con todos los datos salvados desde la máquina1.
 
-Y añadimos las siguientes líneas:
+![copia en m2 del archivo sql](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/copiaenm2delarchi%20sql.PNG)
 
-- SSLCertificateFile /etc/apache2/ssl/apache.crt
-- SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+Además es necesario crear en nuestra máquina esclavo (máquina2) la BD correspondiente ya que el mysqldump no incluye ese archivo la sentencia para crear la BD.
 
-![ ssl.conf](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/paso1.2%20a%C3%B1adir%20ss.conf.PNG)
+Para ello primero creamos la BD y luego restauramos los datos contenidos en la BD (se crean las tablas en el proceso).
 
-Una vez modificado, tenemos que activar el sitio y reiniciar apache:
+![creamos en la m2 la BD](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/creamos%20en%20la%20m2%20la%20BD.PNG)
 
-![ activar y reiniciar apache](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/activarsitioy%20reiniciar%20apache.PNG)
+![restauramos los datos contenidos en la BD](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/restauramos%20los%20datos%20contenidos%20en%20la%20BD.PNG)
 
-Para comprobar que funciona hacemos las peticiones mediante curl y como vemos si no ponemos el -k no nos dejaría:
+### Replicación de BD mediante una configuración maestro-esclavo.
 
-![ comprobacion curl](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/comprobacion%20mediante%20curl.PNG)
+Lo hecho anteriormente está bien, pero podemos mejorarlo configurando un proceso demonio automático, mediante el cual al realizar un cambio en la base de datos maestro (máquina1) se vea directamente reflejado en el esclavo (máquina2).
 
-Para configurar el servidor web m2 copiaremos los certificados generados en m1 a m2, yo he usado rsync pero tambien se puede hacer con scp.
+Para ello debemos realizar lo siguiente:
 
-![ configuracion swap con rasync](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/configurar%20swap2%20a%20traves%20rsync.PNG)
+-Comentar la línea bind-address del fichero de configuración mysql (maestro).
 
-igualmente tenemos que editar el fichero default-ssl y reiniciar el servicio y recargar apache2.
+![comentar la linea bind-address](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/comentar%20la%20linea%20bind-address.PNG)
 
-![ modificacion de default-ssl en swap2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/modificacion%20en%20swap%20del%20fichero%20default-ssl.PNG)
+-Añadir el fichero log_error para que nos avise de los errore, establecer el id del servidor y, por último el log_bin para transacciones seguras.
 
-también tenemos que copiar los certificados al balanceador, para eso crearemos una carpeta y ejecutaremos el comando rsync
+![añadir fichero log_error](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/a%C3%B1adir%20el%20fichero%20log_error.PNG)
 
-![copiar certificados en el balanceador](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/copiar%20certificados%20en%20el%20balanceador%20nginx.PNG)
+-Reiniciar el servicio mysql.
 
-Editamos el fichero de configuración de nginx añadiendo los certificados que hemos copiado y que escuche en el puerto 443 ssl.
+![reiniciamos el servicio mysql](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/reiniciamos%20el%20servicio%20mysql.PNG)
 
-![ configuracion de nginx](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/ficheroconfiguracion%20modificado%20de%20nginx.PNG)
+-Hacemos la misma configuración en el esclavo, con la única diferencia de que el server-iddebe ser 2 en este caso:
 
-Reiniciamos el servicio
+![configuración esclvo server id 2](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/configuracion%20esclavo%20server%20id%202.PNG)
 
-- sudo service nginx restart
+![restart sql esclavo](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/restart%20sql%20esclavo.PNG)
 
-### Configuración del cortafuegos
+-Creamos un usuario en el maestro y le damos permiso para la replicación. Dicho usuario será esclavoy su contraseña esclavotambién.
 
-En primer lugar para ver el estado del cortafuegos ejecutamos: `iptables -L -n -v`
+![creamos un usuario en el maestro](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%203/imagenes/activeystatusngingx.png)
 
-![ estado cortafuegos](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/estado%20del%20cortafuegos.PNG)
+-Indicamos al esclavo los datos del maestro y lo iniciamos.
 
-Como vemos se acepta todo el tráfico ya que aún no hay ninguna regla definida.
+![indicamos al esclavo los datos y lo iniciamos](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/indicamos%20al%20esclavo%20los%20datos%20y%20lo%20inicamos.PNG)
 
-### IPTABLES
+-Volvemos al maestro y volvemos a activar las tablas para poder introducir nuevos datos.
 
-Como vemos iptables tiene muchas funcionalidades para establecer reglas, filtrar tipos de tráfico o bien controlar el acceso a ciertas páginas.
-Algunas de ellas pueden ser:
+![desbloqueamos tablas](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/desbloqueamos%20tablas.PNG)
 
-Si queremos que bloquee todo el tráfico tanto de entrada como de salida:
+-Por último ejecutamos el comando SHOW SLAVE STATUS\G y comprobamos que la variable Seconds_Behind_Master.Sin embargo, realizando esta práctica me encontré que al llegar aquí, tenía este fallo:
 
-`iptables -P INPUT DROP`
+![show slave status](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/SHOW%20SLAVE%20STATUS.PNG)
 
-`iptables -P OUTPUT DROP`
+El fallo de la imagen anterior es debido a que cuando cree las máquinas la cloné para seguir con el resto de prácticas y tiene el mismo id en mysql he encontrado aquí la solución al problema.
 
-`iptables -P FORWARD DROP`
+![resolver error status](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/resolver%20error%20status.PNG)
 
+-Pero a continuación me encontré con el siguiente error en el apartado de Seconds_Behind_Master:
+![error 1236](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%205/imagenes/error1236.PNG)
 
-![ bloqueo de entrada y salida ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueosalida%20y%20entrada.PNG)
-
-Si queremos bloquear el tráfico de entrada y permitir el de salida:
-
-`iptables -P INPUT DROP`
-
-`iptables -P FORWARD DROP`
-
-`iptables -P OUTPUT ACCEPT`
-
-`iptables -A INPUT -m state --state NEW, ESTABLISHED -j ACCEPT`
-
-
-![ bloqueo de entrada y  permite salida ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueo%20entrada%20y%20permite%20salida.PNG)
-
-Si queremos bloquear trafico ICMP para evitar ataques mediante ping:
-
-`iptables -A INPUT -p icmp --icmp-type echo-request -j DROP`
-
-![ bloqueo icmp ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueoicmp.PNG)
-
-Si queremos permitir el acceso por SSH, abriendo el puerto 22:
-
-`iptables -A INPUT -p tcp --dport 22 -j ACCEPT`
-
-`iptables -A OUTPUT -p udp --sport22 -j ACCEPT`
-
-![  permite acceso por ssh ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/permitir%20acceso%20por%20ssh.PNG)
-
-Si queremos permitir el acceso a DNS, abriendo el puerto 53:
-
-`iptables -A INPUT -m state --state NEW -p udp --dport 53 -j ACCEPT`
-
-`iptables -A INPUT -m state --state NEW -p tcp --dport 53 -j ACCEPT`
-
-![   permite acceso a DNS ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/permitir%20acceso%20a%20DNS.PNG)
-
-Si queremos bloquear todo el tráfico de entrada o salida desde una IP:
-
-`iptables -I INPUT -s 192.168.1.100 -j DROP`
-
-`iptables -I OUTPUT -s 192.168.1.100 -j DROP`
-
-![ bloqueo de TRAFICO DE UNA IP ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/bloqueo%20del%20trafico%20de%20una%20ip.PNG)
-
-IDEM para aceptar pero usando ACCEPT en vez de DROP.
-
-Por último para comprobar el funcionamiento del cortafuegos y ver que puertos hay abiertos:
-
-`netstat -tulpn`
-
-![ funcionamiento de cortafuegos ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/ver%20funcionamiento%20de%20cortafuegos.PNG)
-
-
-### SCRIPT
-
-Lo habitual es crear un script que se ejecute en el arranque del sistema.
-
-Tenemos que crear un script para permitir el acceso por los puertos de HTTP y HTTPS al servidor (máquina1), para ello:
-
-![ Script ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/script.PNG)
-
-Para que se ejecute cuando iniciamos la máquina virtual. Añadimos lo siguiente al crontab:
-
-![ ejecutar al iniciar la mquina ](https://github.com/JairoLuisAbrilMoya/Swap18-19/blob/master/Practicas/Practica%204/Imagenes/ejecutarlo%20al%20iniciar%20la%20maquina.PNG)
-
-El parametro & del final sirve para que el proceso se ejecute en segundo plano.
-
-
-
-
-
-
-
-
-
-
+"No se pudo encontrar el nombre del primer archivo de registro en el archivo de índice de registro binario". Sin embargo he repetido la configuración comprobando todos los nombres pero todos son similares y no he conseguido encontrar solución antes de la entrega establecida.
 
